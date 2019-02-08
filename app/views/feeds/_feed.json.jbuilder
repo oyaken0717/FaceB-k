@@ -1,0 +1,16 @@
+<%= form_with(model: feed,
+              local: true,
+                url:confirm_feeds_path) do |form| %>
+
+  <div class="field">
+    <%= form.label :image %>
+
+    <%= image_tag(@feed.image.url) if @feed.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

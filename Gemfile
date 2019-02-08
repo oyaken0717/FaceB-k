@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 gem 'bcrypt', '3.1.11'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -35,3 +36,5 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'carrierwave'
+gem 'mini_magick'
