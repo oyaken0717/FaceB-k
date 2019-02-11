@@ -2,13 +2,32 @@
 <html>
   <head>
     <title>RailsExam2</title>
+    <meta name = "viewport" content = "width = device-width">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="fb.css">
   </head>
 
   <body>
+    <header class = "header row">
+    <div class = "container">
+
+        <div class = "top">
+        <%= image_tag("logo2.png", :class => "logo_image col-md-6") %>
+        <ul class = "top_menu">
+
+            <li class = col-md-6>課題</li>
+        </ul>
+        </div>
+    </header>
+
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
@@ -22,5 +41,6 @@
     <% end %>
 
     <%= yield %>
+    </div>
   </body>
 </html>
