@@ -5,6 +5,12 @@
   <!-- 確認画面でアップロードした画像を表示させるための記述 -->
   <%= image_tag(@feed.image.url) if @feed.image.url %>
   <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+
+<br>
+<p>タイトル:<%= @feed.title %></p>
+<p>本文:<%= @feed.content %></p>
   <%= form.submit "投稿する" %>
 <% end %>
 
@@ -13,5 +19,8 @@
               local:true,
              method:"get") do |form| %>
   <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+
   <%= form.submit "戻る", name: "back" %>
 <% end %>

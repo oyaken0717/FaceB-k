@@ -1,5 +1,6 @@
 class FeedsController < ApplicationController
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
+  before_action :check
 
   # GET /feeds
   # GET /feeds.json
@@ -10,6 +11,7 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
+    
   end
 
   # GET /feeds/new
@@ -66,7 +68,10 @@ class FeedsController < ApplicationController
   end
 
   def confirm
-    @feed = current_user.feeds.build(feed_params)
+    @feed =  Feed.new(feed_params)
+    @feed.user_id = current_user.id
+    render :new if @feed.invalid?
+    # @feed = current_user.feed.build(feed_params)
   end
 
   private
@@ -77,6 +82,13 @@ class FeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
   def feed_params
-    params.require(:feed).permit(:image, :image_cache)
+    params.require(:feed).permit(:image, :image_cache, :title, :content)
+  end
+
+  def check
+    if current_user.nil?
+      @session = new_session_path
+      redirect_to @session
+    end
   end
 end

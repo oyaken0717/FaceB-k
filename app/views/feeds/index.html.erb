@@ -6,7 +6,10 @@
   <thead>
     <tr>
       <th>Image</th>
-      <th colspan="3"></th>
+      
+      <th>Title</th>
+      <th>Content</th>
+      <th>Name</th>
     </tr>
   </thead>
 
@@ -14,9 +17,12 @@
     <% @feeds.each do |feed| %>
       <tr>
         <td><%= feed.image %></td>
-        <td><%= link_to 'Show', feed %></td>
-        <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
-        <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= feed.title %></td>
+        <td><%= feed.content %></td>
+        <td><%= feed.user.name %></td>
+        <td><%= link_to '「しょうさい」', feed %></td>
+        <td><%= link_to '「へんしゅう」', edit_feed_path(feed) %></td>
+        <td><%= link_to '「けす」', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -2,10 +2,26 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @feed.image %>
-  <%= image_tag @feed.image.url %>
+  <br>
+  <% @feed.image %>
+  <%= image_tag @feed.image.url if @feed.image.present? %>
+
+  <br>
+  <strong>title:</strong>
+  <br>
+  <%= @feed.title %>
+  <br>
+  <strong>content:</strong>
+  <br>
+  <%= @feed.content %>
+
+
+
+
+
+
 
 </p>
 
-<%= link_to 'Edit', edit_feed_path(@feed) %> |
-<%= link_to 'Back', feeds_path %>
+<%= link_to '「へんしゅう」', edit_feed_path(@feed) %> |
+<%= link_to '「もどる」', feeds_path %>
